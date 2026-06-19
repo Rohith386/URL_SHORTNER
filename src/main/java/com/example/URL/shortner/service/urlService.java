@@ -1,5 +1,6 @@
 package com.example.URL.shortner.service;
 
+import com.example.URL.shortner.Entity.URL;
 import com.example.URL.shortner.repository.urlRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,13 +11,15 @@ public class urlService {
 
     @Autowired
     urlRepo urp;
-    public String shortURL(String url){
+    public URL shortURL(String url){
 
         try{
-            String str=urp.findBylongURL(url);
+            URL us=urp.findByLongURL(url);
+            return us;
         }
         catch(Exception e){
             return "Error";
         }
     }
 }
+

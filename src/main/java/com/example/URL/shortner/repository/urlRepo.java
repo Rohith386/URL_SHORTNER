@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface urlRepo extends JpaRepository<URL, Long > {
-    String findBylongURL(String longURL);
-
+    URL findByLongURL(String longURL);
 }
+
+
