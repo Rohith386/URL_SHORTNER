@@ -14,11 +14,11 @@ public class urlService {
     public URL shortURL(String url){
 
         try{
-            URL us=urp.findByLongURL(url);
+            URL us=urp.findByLongUrl(url);
             return us;
         }
         catch(Exception e){
-            return "Error";
+            return null;
         }
     }
 }
