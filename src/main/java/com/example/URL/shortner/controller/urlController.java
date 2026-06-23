@@ -5,6 +5,8 @@ import com.example.URL.shortner.service.urlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/URL")
 public class urlController {
@@ -14,13 +16,17 @@ public class urlController {
 
     @GetMapping("/getURL")
     public String getShortURL(@RequestParam String url) {
-        URL ur=us.shortURL(url);
-        if(ur==null){
+        String ur=us.shortURL(url);
+        if(ur.equals("Not Found")){
             return "URL not found";
         }
-        String shorturl = ur.getShortUrl();
-        return shorturl;
+        return ur;
 
+    }
+
+    @GetMapping("/AllURL")
+    public List<URL> getAllUrl(){
+        return us.allUrl();
     }
 
 }

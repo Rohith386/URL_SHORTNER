@@ -6,20 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.util.ExceptionUtil;
 
+import java.util.List;
+
 @Service
 public class urlService {
 
     @Autowired
     urlRepo urp;
-    public URL shortURL(String url){
+    public String shortURL(String url){
 
         try{
             URL us=urp.findByLongUrl(url);
-            return us;
+            return us.getShortUrl();
         }
         catch(Exception e){
-            return null;
+            return "Not Found";
         }
+    }
+
+    public List<URL> allUrl(){
+        return urp.findAll();
     }
 }
 

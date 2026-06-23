@@ -4,11 +4,10 @@ import com.example.URL.shortner.Entity.URL;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
 public interface urlRepo extends JpaRepository<URL, Long > {
-    URL findByLongUrl(String urlL);
+    URL findByLongUrl(String url);
 }
 
 
