@@ -9,14 +9,19 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name="URL")
+@Table(name="url")
 public class URL {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long urlId;
-    String longUrl;
-    String shortUrl;
+    @Column(name = "url_id")
+    private long urlId;
+
+    @Column(name = "long_url")
+    private String longUrl;
+
+    @Column(name = "short_url")
+    private String shortUrl;
 
     public long getUrlId() {
         return urlId;
