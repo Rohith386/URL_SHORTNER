@@ -19,6 +19,8 @@ public class shortUrlService {
 
         try{
             String shortURL = generateShortUrl(url);
+            System.out.println(url);
+            System.out.println(shortURL);
             ur.save(new URL(url,shortURL));
             return new ResponseEntity<>(shortURL, HttpStatus.OK);
         }

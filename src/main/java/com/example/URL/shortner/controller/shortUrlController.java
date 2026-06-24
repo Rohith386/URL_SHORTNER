@@ -3,9 +3,7 @@ package com.example.URL.shortner.controller;
 import com.example.URL.shortner.service.shortUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -17,7 +15,7 @@ public class shortUrlController {
     shortUrlService srs;
 
     @PostMapping("/generateShortUrl")
-    public ResponseEntity<String> shortUrl(String url){
+    public ResponseEntity<String> shortUrl(@RequestParam String url){
         return srs.generateShort(url);
     }
 }
