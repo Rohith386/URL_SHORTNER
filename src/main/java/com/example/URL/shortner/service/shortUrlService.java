@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import tools.jackson.databind.node.StringNode;
+
+import java.util.Random;
 
 @Service
 public class shortUrlService {
@@ -26,5 +29,19 @@ public class shortUrlService {
 
     private String generateShortUrl(String url){
 
+        StringBuilder sb = new StringBuilder();
+        sb.append("http://");
+
+        String str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+        Random rand = new Random();
+
+        for(int i=0;i<8;i++){
+            int val = rand.nextInt(str.length()-1);
+            sb.append(str.charAt(val));
+        }
+
+        sb.append(".shortURL");
+
+        return sb.toString();
     }
 }

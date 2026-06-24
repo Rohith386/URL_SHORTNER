@@ -11,6 +11,10 @@ import lombok.*;
 @Entity
 @Table(name="url")
 public class URL {
+    public URL(String longUrl, String shortUrl) {
+        this.longUrl = longUrl;
+        this.shortUrl = shortUrl;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
