@@ -1,5 +1,6 @@
 package com.example.URL.shortner.service;
 
+import com.example.URL.shortner.Entity.URL;
 import com.example.URL.shortner.repository.urlRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,11 +15,16 @@ public class shortUrlService {
     public ResponseEntity<String> generateShort(String url){
 
         try{
-            String URL = generateShortUrl(url);
-            return new ResponseEntity<>(URL, HttpStatus.OK);
+            String shortURL = generateShortUrl(url);
+            ur.save(new URL(url,shortURL));
+            return new ResponseEntity<>(shortURL, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>("Error",HttpStatus.BAD_REQUEST);
         }
+    }
+
+    private String generateShortUrl(String url){
+
     }
 }

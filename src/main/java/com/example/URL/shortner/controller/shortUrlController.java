@@ -17,7 +17,7 @@ public class shortUrlController {
     shortUrlService srs;
 
     @PostMapping("/generateShortUrl")
-    public Optional shortUrl(String url){
-        return srs.generateShort(url),;
+    public ResponseEntity<String> shortUrl(String url){
+        return srs.generateShort(url);
     }
 }
