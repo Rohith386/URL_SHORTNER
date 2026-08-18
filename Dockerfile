@@ -6,4 +6,4 @@ COPY target/url-shortner.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","url-shortner.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
