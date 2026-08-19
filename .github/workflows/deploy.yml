@@ -46,7 +46,10 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 15m
           script: |
+            docker start mysql-container || true
+
             docker pull rohith514/urlshortner:latest
 
             docker stop urlshortner || true
