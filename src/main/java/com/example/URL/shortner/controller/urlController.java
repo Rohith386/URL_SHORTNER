@@ -15,8 +15,6 @@ public class urlController {
     @Autowired
     urlService us;
 
-    @Autowired
-    urlRepo repository;
     @GetMapping("/getURL")
     public String getShortURL(@RequestParam String url) {
         String ur=us.shortURL(url);
@@ -34,7 +32,7 @@ public class urlController {
 
     @GetMapping("/test")
     public String test() {
-        return repository.count() + "";
+        return us.countRows() + "";
     }
 
 }
