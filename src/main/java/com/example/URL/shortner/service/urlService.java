@@ -24,6 +24,10 @@ public class urlService {
         }
     }
 
+    public long countRows(){
+        return urp.count();
+    }
+
     public List<URL> allUrl(){
         return urp.findAll();
     }
