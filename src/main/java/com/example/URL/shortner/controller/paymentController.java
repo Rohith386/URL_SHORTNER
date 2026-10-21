@@ -14,9 +14,9 @@ public class paymentController {
     paymentService ps;
 
     @PostMapping("/payements")
-    public String createOrder(int amount,String currency,long id){
+    public String createOrder(int amount,String currency){
         try{
-            return ps.createOrder(amount,currency,id);
+            return ps.createOrder(amount,currency,547893280);
         }
         catch(Exception e){
             throw new RuntimeException(e);

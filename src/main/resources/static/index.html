@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>payments</title>
+    </head>
+    <body>
+        <button id="pay">Pay Now</button>
+        <script src = "http://checkout/razorrpay.com/v1/checkout.js"></script>
+        <script>
+            documents.getElementById("pay").onclick = function() {
+                fetch("http://localhost:8080/api/payments/createOrder?amount=100&currency=INR", {
+                method: "POST"
+            })
+        </script>
+    </body>
+
+</html>
