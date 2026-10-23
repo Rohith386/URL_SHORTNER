@@ -1,17 +1,60 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>payments</title>
-    </head>
-    <body>
-        <button id="pay">Pay Now</button>
-        <script src = "http://checkout/razorrpay.com/v1/checkout.js"></script>
-        <script>
-            documents.getElementById("pay").onclick = function() {
-                fetch("http://localhost:8080/api/payments/createOrder?amount=100&currency=INR", {
-                method: "POST"
-            })
-        </script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<h2>Make a Payment</h2>
+<button id="pay">Pay Now - ₹100</button>
+<p id="message"></p>
 
+<script>
+    document.getElementById("pay").onclick = async function () {
+        const message = document.getElementById("message");
+        try {
+            message.textContent = "Creating order...";
+
+            const response = await fetch(
+                "http://localhost:8080/api/payments/createOrder?amount=100&currency=INR",
+                {
+                    method: "POST"
+                }
+            );
+            const responseText = await response.text();
+
+            if (!response.ok) {
+                throw new Error(responseText);
+            }
+
+            const order = JSON.parse(responseText);
+console.log(order);
+
+            const options = {
+                key: "rzp_test_TqCth7H66Ie4lb",
+                amount: order.amount,
+                currency: order.currency,
+                name: "My Website",
+                description: "Test payment",
+                order_id: order.id,
+
+                handler: function (result) {
+                    message.textContent =
+                        "Payment submitted. Verify the signature on your backend.";
+                    console.log(result);
+                }
+            };
+
+            const razorpay = new Razorpay(options);
+            razorpay.open();
+
+        } catch (error) {
+            message.textContent = "Error: " + error.message;
+            console.error(error);
+        }
+    };
+</script>
+</body>
 </html>
