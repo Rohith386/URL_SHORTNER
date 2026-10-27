@@ -3,7 +3,9 @@ package com.example.URL.shortner.service;
 import com.example.URL.shortner.Entity.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
+@Service
 public class KafkaService {
 
     @Autowired
