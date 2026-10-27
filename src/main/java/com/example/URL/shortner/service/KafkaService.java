@@ -16,3 +16,4 @@ public class KafkaService {
         return "Data sent to kafka, Successfully";
     }
 }
+
